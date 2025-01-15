@@ -1,0 +1,60 @@
+{\rtf1\ansi\ansicpg1254\cocoartf2757
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+  <meta charset="UTF-8">\
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+  <title>Days Since Counter</title>\
+  <style>\
+    body \{\
+      font-family: Arial, sans-serif;\
+      text-align: center;\
+      padding: 20px;\
+      background-color: #f4f4f9;\
+      color: #333;\
+    \}\
+    .counter \{\
+      font-size: 2em;\
+      font-weight: bold;\
+      margin-top: 20px;\
+    \}\
+    h1 \{\
+      color: #2c3e50;\
+    \}\
+  </style>\
+</head>\
+<body>\
+  <h1>Days Since Counter</h1>\
+  <p>Enter a date to calculate days since:</p>\
+  <input type="date" id="dateInput">\
+  <button onclick="updateCounter()">Calculate</button>\
+  <div class="counter" id="daysSinceCounter">0 days</div>\
+\
+  <script>\
+    function calculateDaysSince(startDate) \{\
+      const start = new Date(startDate);\
+      const today = new Date();\
+      const difference = today - start;\
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));\
+      return days >= 0 ? days : 0; // Return 0 if the date is in the future\
+    \}\
+\
+    function updateCounter() \{\
+      const dateInput = document.getElementById("dateInput").value;\
+      if (dateInput) \{\
+        const days = calculateDaysSince(dateInput);\
+        document.getElementById("daysSinceCounter").textContent = `$\{days\} days`;\
+      \} else \{\
+        document.getElementById("daysSinceCounter").textContent = "Please select a date.";\
+      \}\
+    \}\
+  </script>\
+</body>\
+</html>\
+}
